@@ -15,6 +15,7 @@ body{
       min-height: 450px;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
 }
 
 .item{
@@ -29,5 +30,9 @@ body{
       /* grid-column: 1/5; */
       /* grid-column: 1/ span 4; */
       /* grid-row: 1/4; */
-      grid-row: 1/ span 3;
+      /* grid-row: 1/ span 3; */
+}
+
+.item8{
+      grid-area: 1/2/5/6;
 }
