@@ -1,0 +1,41 @@
+body{
+      background-color: purple;
+}
+
+.container{
+      background-color: white;
+      
+}
+.inner-container{
+      background-color: white;
+      
+}
+#topic{
+      color: red;
+      font-family: sans-serif;
+}
+
+li:last-child{
+      color: aqua;
+}
+
+button:hover{
+      background-color: purple;
+}
+p{
+      padding: 40px;
+}
+
+p::first-line{
+      color: aquamarine;
+      
+}
+p::first-letter{
+      text-transform: lowercase;
+}
+
+button{
+      width: 200px;
+      background-color: purple;
+      margin: 30px;
+}
