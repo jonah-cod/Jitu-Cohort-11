@@ -1,0 +1,31 @@
+body{
+      height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+.container{
+      background-color: #48CAE4;
+      color: #001845;
+      padding: 10px;
+
+      width: 900px;
+      min-height: 450px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+}
+
+.item{
+      background-color: #a8e7f3;
+      text-align: center;
+      line-height: 150px;
+      border: #001845 solid 2px;
+      font-size: 40px;
+      font-size: 700;
+}
+.item1{
+      /* grid-column: 1/5; */
+      grid-column: 1/ span 4;
+}
