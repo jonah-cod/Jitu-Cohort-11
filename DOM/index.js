@@ -30,7 +30,12 @@ let btn = document.getElementById("btn");
 btn.onclick = function () {
       let date = new Date()
       let todo = {id: date.getTime(), title: input_field.value, is_complete: false}
-      createTodo(todo)
+      if (input_field.value.trim()) {
+            createTodo(todo)
+            
+      }else{
+            alert("Task can't be empty")
+      }
       input_field.value = ""
 }
 
@@ -50,12 +55,20 @@ function createTodo(task){
       //changing it's type attribut
       todo_check.setAttribute("type", "checkbox")
 
+      // create delete button
+      let btn = document.createElement("button")
+      btn.innerHTML = `<i class="fas fa-trash-alt"></i>`
+
+      // add event listener
+      btn.addEventListener("click", (e)=>{deleteTask(e)})
+
       //implementation of addEventListener
       todo_check.addEventListener("click", (e)=>completeTask(e))
 
       //adding elements to dom
       todo.appendChild(todo_text);
       todo.appendChild(todo_check);
+      todo.appendChild(btn)
       // setting classes
       todo.classList.add("todo");
       todo.id = task.id
@@ -68,4 +81,10 @@ function completeTask(e){
       let task = e.target.previousSibling;
       task.style.textDecoration = "line-through"
       task.style.color = "blue"
+}
+
+
+function deleteTask(e) {
+      let todo_to_delete = e.target.parentNode.parentNode
+      todos.removeChild(todo_to_delete);
 }

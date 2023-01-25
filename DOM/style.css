@@ -29,7 +29,7 @@ input{
       outline: #93C6E7;
 }
 
-button{
+.form button{
       padding: 7px 20px;
       outline: none;
       border: none;
@@ -72,4 +72,16 @@ button:active{
 
 .todo span{
       color: white;
+}
+
+.todo button{
+      padding: 0;
+      margin: 0;
+      border: none;
+      outline: none;
+      background-color: #AEE2FF;
+}
+
+.todo i{
+      color: #f55069;
 }
