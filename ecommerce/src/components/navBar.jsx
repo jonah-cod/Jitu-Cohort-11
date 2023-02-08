@@ -1,46 +1,54 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+
 import logo from '../images/icon.png'
 
-const NavBar = ({setfilter, filter}) => {
+const NavBar = () => {
       const [nav_items, setnav_items] = useState([])
+      const [text, settext] = useState("")
+      const [search, setsearch] = useSearchParams()
       
-      const handleGetCategory = (category)=>{
-            setfilter(category)
-      }
-      
-      const active = ()=> ({
+      const active = () => ({
             textDecoration: "underline",
             backgroundColor: "#F7F7F8"
       })
 
-      
 
-      useEffect(() => {
-            (async()=>{
-                  await fetch("https://fakestoreapi.com/products/categories")
-                  .then(res=>res.json()
-                  .then(res=>setnav_items(res)))
-            })()
-       
-      }, [])
+      const handleSearch =(e)=>{
+            e.preventDefault()
+            setsearch({searchedItem: text})
+      }
       
+     
+      useEffect(() => {
+            (async () => {
+                  await fetch("https://fakestoreapi.com/products/categories")
+                        .then(res => res.json()
+                              .then(res => setnav_items(res)))
+            })()
+
+      }, [])
+
       return (
             <div className="nav">
                   <div className="icon">
                         <img src={logo} alt="" />
                   </div>
-                  <div className="navbar">
-                        <ul>
-                        <li onClick={()=>handleGetCategory("all")}
-                              style={filter==="all"? active(): {}}>Home</li>
+                  <div className="search">
+                        <form action="" >
+                            <input type="text" value={text} 
+                                    name='search' 
+                                    onChange={(e)=>settext(e.target.value)}/>
 
-
-                            {nav_items.map(item=><li 
-                                    onClick={()=>handleGetCategory(item)} 
-                                    key={item}
-                                    style={filter===item? active(): {}}>{item}</li>)}  
-                        </ul>
+                            <button type='submit' 
+                                    onClick={handleSearch}>search</button> 
+                        </form>
                         
+                  </div>
+                  <div className="navbar">
+
+                        <Link to='/' >Home</Link>
+                        {nav_items.map(item => <Link to={`/${item}`} key={item}>{item}</Link>)}
                   </div>
                   <div className="cart">
                         <i className="far fa-cart-plus "></i>
