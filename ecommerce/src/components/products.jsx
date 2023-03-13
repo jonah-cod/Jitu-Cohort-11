@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 import Product from './product';
 
+import { fetchProducts } from '../redux/slices/productsSlice'
 const Products = () => {
 
-      const [products, setproducts] = useState([])
       const [search, setsearch] = useSearchParams();
       const [filter, setfilter] = useState("")
+      const dispatch = useDispatch()
       
-      async function getProducts() {
-            let products = await fetch("https://fakestoreapi.com/products").then(res => res.json())
-            setproducts(products)
-      }
+      const products = useSelector(state=>state.products)
+      
 
 
       useEffect(() => {
-            
-            getProducts()
+            dispatch(fetchProducts())
       }, [])
+
       useEffect(() => {
             setfilter(search.get("searchedItem")?.toLowerCase())
       }, [search])

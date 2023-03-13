@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import logo from '../images/icon.png'
 
 const NavBar = () => {
       const [nav_items, setnav_items] = useState([])
       const [text, settext] = useState("")
       const [search, setsearch] = useSearchParams()
+      
+      const cart = useSelector(state=>state.cart)
       
       const active = () => ({
             textDecoration: "underline",
@@ -52,7 +54,7 @@ const NavBar = () => {
                   </div>
                   <div className="cart">
                         <i className="far fa-cart-plus "></i>
-                        <span className="counter">0</span>
+                        <span className="counter">{cart.length}</span>
                   </div>
                   <div className="menu">
                         <i className="fas fa-bars"></i>

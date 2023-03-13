@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  gap: 40px;
+  gap: 20px;
   position: relative;
 
 }
@@ -32,7 +32,7 @@
   color: #2B3445;
   padding: 5px 15px;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: .8em;
   text-transform: capitalize;
   transition: .2s ease-in;
 }
@@ -162,6 +162,14 @@
   border-radius: 5px;
 }
 
+.btn-add-to-cart{
+  transition: .3s ease-in-out;
+}
+.btn-add-to-cart:hover{
+  cursor: pointer;
+  transform: scale(1.1);}
+
+
 .search input, .search button{
   outline: none;
   padding: 5px 20px;
@@ -171,12 +179,12 @@
 
 
 @media (max-width: 900px) {
-  .navbar{
+  /* .navbar{
         display: none;
   }
   .menu{
         display: block;
-  }
+  } */
   .products{
         grid-template-columns: repeat(3, 1fr);
   }

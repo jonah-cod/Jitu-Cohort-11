@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-const ProductDetails = () => {
+
+
+
+export const ProductDetails = () => {
   const { product_id } = useParams()
   const [product, setproduct] = useState({});
   const navigate = useNavigate()
@@ -35,4 +38,3 @@ const ProductDetails = () => {
   )
 }
 
-export default ProductDetails
